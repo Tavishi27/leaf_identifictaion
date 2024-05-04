@@ -1,0 +1,6 @@
+Leaf Identification Resources
+
+Dataset: https://www.kaggle.com/datasets/xhlulu/leafsnap-dataset?resource=download
+	 https://www.kaggle.com/datasets/salimataalifei/am1-leaf?select=test.csv
+
+Leaf identification quiz: https://www.leaf-id.com/
