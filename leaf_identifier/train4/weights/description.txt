@@ -1,0 +1,1 @@
+This is the trained Yolo v8 model my program currently uses
