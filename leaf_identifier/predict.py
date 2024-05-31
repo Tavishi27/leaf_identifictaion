@@ -38,4 +38,3 @@ def classify(img):
     # print(str(percent) + "%")
 
     return scientific_name, common_name, percent
-
