@@ -14,7 +14,6 @@ import pandas as pd
 def classify(img):
     # load the trained model
     model = YOLO("./train4/weights/last.pt")
-    # img = "/Users/tavis/OneDrive/Desktop/Leaf Identification/split_data/val/acer_saccharinum/13001158006214.jpg"
     results = model(img)
 
     # get the probabilities of the image fitting into that category for each leaf
@@ -27,14 +26,13 @@ def classify(img):
         if probs[n] > max_prob:
             max_prob = probs[n]
             max_prob_index = n
+    # convert the probability to a percentage
+    percent = round(max_prob * 100, 2)
+
     # use leaves.csv to get the tree's common name
     common_names = pd.read_csv("leaves.csv")
     # format the scientific name
     scientific_name = names_dict[max_prob_index].replace("_", " ").capitalize()
     common_name = common_names[common_names["species"] == scientific_name].common_name.to_list()[0]
-    # convert the probability to a percentage
-    percent = round(max_prob * 100, 2)
-    # print(scientific_name + " (" + common_name + ")")
-    # print(str(percent) + "%")
 
     return scientific_name, common_name, percent
