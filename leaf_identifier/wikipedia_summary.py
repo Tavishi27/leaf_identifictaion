@@ -16,31 +16,32 @@ leaves = pd.read_csv("leaves.csv")
 max_descript_word_count = 150
 line_len = 15
 
+# wikipedia.summary() does not work for these plants
+# So each of their corresponding descriptions are stored in a dictionary
+wiki_page_dne = {
+    "Magnolia virginiana": "Magnolia virginiana is an evergreen or deciduous tree to 30 m (100 ft) tall,"
+                           " native to the lowlands and swamps of the Atlantic coastal plain of the"
+                           " eastern United States, from Florida to Long Island, New York. Magnolia virginiana "
+                           "is often grown as an ornamental tree in gardens, and used in horticultural "
+                           "applications to give an architectural feel to landscape designs. "
+                           "It is an attractive tree for parks and large gardens, grown for its "
+                           "large, conspicuous, scented flowers, for its clean, attractive foliage, "
+                           "and for its fast growth. In warmer areas Magnolia virginiana is valued for "
+                           "its evergreen foliage.",
+    "Morus alba": "Morus alba, known as white mulberry, common mulberry and silkworm mulberry,"
+                  " is a fast-growing, small to medium-sized mulberry tree which grows to 10–20 m"
+                  " (33–66 ft) tall. The white mulberry is widely cultivated to feed the"
+                  " silkworms employed in the commercial production of silk. It is also notable "
+                  "for the rapid release of its pollen, which is launched at greater than half "
+                  "the speed of sound. Its berries are edible when ripe.",
+    "Picea abies": "Picea abies, the Norway spruce or European spruce, is a species of spruce native "
+                   "to Northern, Central and Eastern Europe. The Norway spruce has a wide distribution "
+                   "for it being planted for its wood, and is the species used as the main Christmas tree "
+                   "in several countries around the world."}
+
 
 # get_description() takes a tree's scientific name as an input and returns a wikipedia description for that tree
 def get_description(name):
-    # wikipedia.summary() does not work for these plants
-    # So each of their corresponding descriptions are stored in a dictionary
-    wiki_page_dne = {
-        "Magnolia virginiana": "Magnolia virginiana is an evergreen or deciduous tree to 30 m (100 ft) tall,"
-                               " native to the lowlands and swamps of the Atlantic coastal plain of the"
-                               " eastern United States, from Florida to Long Island, New York. Magnolia virginiana "
-                               "is often grown as an ornamental tree in gardens, and used in horticultural "
-                               "applications to give an architectural feel to landscape designs. "
-                               "It is an attractive tree for parks and large gardens, grown for its "
-                               "large, conspicuous, scented flowers, for its clean, attractive foliage, "
-                               "and for its fast growth. In warmer areas Magnolia virginiana is valued for "
-                               "its evergreen foliage.",
-        "Morus alba": "Morus alba, known as white mulberry, common mulberry and silkworm mulberry,"
-                      " is a fast-growing, small to medium-sized mulberry tree which grows to 10–20 m"
-                      " (33–66 ft) tall. The white mulberry is widely cultivated to feed the"
-                      " silkworms employed in the commercial production of silk. It is also notable "
-                      "for the rapid release of its pollen, which is launched at greater than half "
-                      "the speed of sound. Its berries are edible when ripe.",
-        "Picea abies": "Picea abies, the Norway spruce or European spruce, is a species of spruce native "
-                       "to Northern, Central and Eastern Europe. The Norway spruce has a wide distribution "
-                       "for it being planted for its wood, and is the species used as the main Christmas tree "
-                       "in several countries around the world."}
     # if the plant name is not in the wiki_page_dne dictionary, get its description using wikipedia.summary()
     if not (name in wiki_page_dne):
         try:
